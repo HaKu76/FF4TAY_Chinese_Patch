@@ -4,7 +4,7 @@ Steam 版《FINAL FANTASY IV: THE AFTER YEARS》简体中文补丁，基于 Andr
 
 ## 安装
 
-将 `FF4TAY_Install.exe` 放入游戏根目录（与 `FF4A.exe` 同级），双击运行，点击「安装补丁」。
+将 `FF4TAY_Chinese_Patch_Install.exe` 放入游戏根目录（与 `FF4A.exe` 同级），双击运行，点击「安装补丁」。
 
 > 要求：Windows 10/11 + [.NET Desktop Runtime 9.0](https://dotnet.microsoft.com/download/dotnet/9.0)
 > 安装前请先关闭游戏。

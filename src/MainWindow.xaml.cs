@@ -107,7 +107,9 @@ public partial class MainWindow : Window
         foreach (var entry in zip.Entries)
         {
             if (string.IsNullOrEmpty(entry.Name)) continue;
-            var destPath = Path.Combine(LprojDir, entry.FullName);
+            // menu.txt goes to game root, everything else to en.lproj
+            var baseDir = entry.Name == "menu.txt" ? GameDir! : LprojDir;
+            var destPath = Path.Combine(baseDir, entry.FullName);
             var destDir = Path.GetDirectoryName(destPath)!;
             if (!Directory.Exists(destDir)) Directory.CreateDirectory(destDir);
             entry.ExtractToFile(destPath, true);
