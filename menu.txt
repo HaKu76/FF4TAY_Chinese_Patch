@@ -1,0 +1,49 @@
+继续
+结束游戏
+是
+否
+要跳过事件剧情吗？
+要结束游戏吗？
+键盘输入，按Enter确定。
+Reprendre
+Quitter
+Ok
+Annuler
+Voulez-vous passer cette scène ?
+Voulez-vous quittez le jeu ?
+Utilisez le clavier pour saisir le nom. Appuyez sur Entrée pour valider.
+Riprendi
+Esci
+Ok
+Annulla
+Vuoi saltare questa scena?
+Vuoi lasciare la partita?
+Utilizzare la tastiera per immettere il nome. Premi Invio per convalidare.
+Fortsetzen
+Beenden
+Okay
+Abbrechen
+Möchten Sie diese Szene überspringen?
+Möchten Sie das Spiel beenden?
+Geben Sie den Namen mit der Tastatur. Drücke Eingabetaste um zu bestätigen.
+Continuar
+Salir
+Ok
+Cancelar
+¿Quiere saltarse esta escena?
+¿Quiere salir del juego?
+Utilice el teclado para introducir el nombre. Pulsa Entrar para confirmar.
+Prosseguir
+Sair
+Ok
+Cancelar
+Deseja pular esta cena?
+Deseja sair do jogo?
+Use o teclado para digitar o nome. Pressione Enter para validar.
+Продолжить
+Выйти
+Oк
+Отмена
+Вы хотите пропустить эту сцену?
+Вы хотите выйти из игры?
+Введите имя с помощью клавиатуры. Нажмите Enter, чтобы подтвердить.
