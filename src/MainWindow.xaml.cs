@@ -65,10 +65,7 @@ public partial class MainWindow : Window
             var windir = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
             var fonts = new (string Name, string Path)[]
             {
-                ("SimHei",          System.IO.Path.Combine(windir, "Fonts", "simhei.ttf")),
-                ("Microsoft YaHei", System.IO.Path.Combine(windir, "Fonts", "msyh.ttc")),
-                ("DengXian",        System.IO.Path.Combine(windir, "Fonts", "Deng.ttf")),
-                ("SimSun",          System.IO.Path.Combine(windir, "Fonts", "simsun.ttc")),
+                ("SimHei", System.IO.Path.Combine(windir, "Fonts", "simhei.ttf")),
             };
             bool found = false;
             foreach (var (name, fp) in fonts)

@@ -18,27 +18,9 @@ if exist "%SystemRoot%\Fonts\simhei.ttf" (
     set FONT_FOUND=1
 )
 
-if %FONT_FOUND%==0 if exist "%SystemRoot%\Fonts\msyh.ttc" (
-    copy /Y "%SystemRoot%\Fonts\msyh.ttc" "..\arial.ttf" >nul 2>nul
-    echo   Microsoft YaHei ^(msyh.ttc^)
-    set FONT_FOUND=1
-)
-
-if %FONT_FOUND%==0 if exist "%SystemRoot%\Fonts\Deng.ttf" (
-    copy /Y "%SystemRoot%\Fonts\Deng.ttf" "..\arial.ttf" >nul 2>nul
-    echo   DengXian ^(Deng.ttf^)
-    set FONT_FOUND=1
-)
-
-if %FONT_FOUND%==0 if exist "%SystemRoot%\Fonts\simsun.ttc" (
-    copy /Y "%SystemRoot%\Fonts\simsun.ttc" "..\arial.ttf" >nul 2>nul
-    echo   SimSun ^(simsun.ttc^)
-    set FONT_FOUND=1
-)
-
 if %FONT_FOUND%==0 (
     echo   No Chinese font found on system.
-    echo   Install SimHei or Microsoft YaHei from Windows Settings.
+    echo   Install SimHei from Windows Settings.
     echo   Open-source CJK fonts are known to crash this game.
     echo   See README.md for details.
 )

@@ -77,9 +77,7 @@ FF4TAY_Chinese_Patch/
 | 字体 | 状态 |
 |------|------|
 | SimHei（黑体） | 正常 |
-| Microsoft YaHei（微软雅黑） | 正常 |
-| DengXian（等线） | 正常 |
-| SimSun（宋体） | 正常 |
+| 其他 Windows 系统字体 | （已排除：YaHei为ttc格式不支持，DengXian系统不带，SimSun会闪退） |
 | Source Han Sans / 思源黑体 | 闪退 |
 | Noto Sans SC | 闪退 |
 
