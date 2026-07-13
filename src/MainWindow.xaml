@@ -17,7 +17,7 @@
                     BorderBrush="#30000000" BorderThickness="0,0,0,0.5"
                     MouseLeftButtonDown="Window_MouseDown">
                 <Grid>
-                    <TextBlock Text="FF4 TAY 中文补丁 v1.0" Foreground="#333"
+                    <TextBlock Text="FF4 TAY 中文补丁 v1.0.1" Foreground="#333"
                                FontFamily="Microsoft YaHei" FontSize="12"
                                VerticalAlignment="Center" Margin="12,0,0,0"/>
                     <Button Content="X" Width="32" Height="32" HorizontalAlignment="Right"
@@ -33,7 +33,7 @@
                     <TextBlock Text="最终幻想4：月之归还" Foreground="Black"
                                FontFamily="Microsoft YaHei" FontSize="22" FontWeight="Bold"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="简体中文补丁  v1.0" Foreground="#333"
+                    <TextBlock Text="简体中文补丁  v1.0.1" Foreground="#333"
                                FontFamily="Microsoft YaHei" FontSize="13"
                                HorizontalAlignment="Center" Margin="0,4,0,0"/>
                 </StackPanel>

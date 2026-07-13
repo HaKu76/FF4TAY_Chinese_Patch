@@ -19,7 +19,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         InitPaths();
-        Log("FF4 TAY 中文补丁 v1.0\n");
+        Log("FF4 TAY 中文补丁 v1.0.1\n");
         Log("点击「安装补丁」开始安装。");
         Log("如需卸载，请在 Steam 验证游戏文件完整性。");
     }
