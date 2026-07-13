@@ -19,9 +19,6 @@ jobs:
       - name: Build
         run: dotnet publish src/ff4_patcher.csproj -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -o publish
 
-      - name: Rename
-        run: move publish\ff4_patcher.exe publish\FF4TAY_Chinese_Patch_Install.exe
-
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
