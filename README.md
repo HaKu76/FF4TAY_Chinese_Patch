@@ -20,9 +20,9 @@ Steam 右键游戏 → 属性 → 已安装文件 → 验证游戏文件的完�
 | 文件 | 说明 |
 |------|------|
 | `Resources/en.lproj/*` | 121 个简体中文游戏文件（文本、字体、UI），内置于 EXE |
-| `Resources/en.lproj/battle.msd` | 战斗文本（v1.0.1 修复：U+21D2→U+2192） |
-| `Resources/en.lproj/menu.msd` | 菜单文本（同上修复，3处） |
-| `Resources/en.lproj/scenario.msd` | 剧情文本（同上修复，2处） |
+| `Resources/en.lproj/battle.msd` | 战斗文本（v1.0.1 修复 1 处缺字箭头） |
+| `Resources/en.lproj/menu.msd` | 菜单文本（v1.0.1 修复 3 处箭头；v1.0.2 补齐 133 条 PC 专用消息） |
+| `Resources/en.lproj/scenario.msd` | 剧情文本（v1.0.2 修复消息 450508、680362 的损坏索引） |
 | `menu.txt` | 暂停菜单中文字符串 |
 | `arial.ttf` | 自动检测并复制系统中文字体 |
 
@@ -43,7 +43,8 @@ FF4TAY_Chinese_Patch/
 └── tools/                  ← OBB 解包工具 + 原始中文文件
     ├── extract_obb.py
     ├── decrypt_obb.py
-    └── extracted_zh_CN/
+    ├── Update-TextResources.ps1
+    └── output/
 ```
 
 ## 安装器工作流
@@ -105,7 +106,13 @@ FF4TAY_Chinese_Patch/
 | 剧情对话 | `font_cain.*`, `font_edge.*` 等 |
 | 战斗/道具/技能 | 各角色 `font_*.NCBR` |
 
-引擎通过 `.NCER` 映射字符编码 → `.NCBR` 取字形。若字符码在 NCER 中无映射（如中文 MSD 的 U+21D2），则显示为方块。v1.0.1 已将全部 `.msd` 文件中的 U+21D2 替换为 U+2192（共 6 处）。
+引擎通过 `.NCER` 映射字符编码 → `.NCBR` 取字形。若字符码在 NCER 中无映射（如中文 MSD 的 U+21D2），则显示为方块。v1.0.1 将 `battle.msd` 的 1 处和 `menu.msd` 的 3 处 U+21D2 替换为 U+2192。原版本还误把 `scenario.msd` 索引中的两组相同字节当成字符替换，v1.0.2 已恢复这两个索引。
+
+### v1.0.2 文本完整性修复
+
+- 补入 Android 中文资源缺少、但 Steam PC 版会读取的 133 条菜单消息：`使用`、`装备`、`队伍编成`、128 个键盘键名及 2 个方向输入标签。
+- 恢复剧情消息 `450508` 和 `680362` 的正确索引；后者是残月在“等候您的指示！”附近原本不显示的“地底也一片祥和。”。
+- 按消息 ID 对齐 Steam 版德语、西班牙语、法语、意大利语、葡萄牙语、俄语的共同 ID 集后，六个中文 `.msd` 均无缺项或可疑空文本；各语言独有的语法/占位 ID 不作跨语言补入。
 
 验证方法：删除全部 108 个字体文件，标题正常，菜单和对话变为方块。
 
@@ -117,7 +124,7 @@ OBB 解包算法、文件格式详解、文本渲染流程参阅 [tools/README.m
 
 ```bash
 cd src
-dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true -o publish
+dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true --self-contained false -o publish
 ```
 
 ## 致谢

@@ -1,6 +1,6 @@
 @echo off
 echo ============================================
-echo  FF4 TAY - Chinese Patch v1.0.1
+echo  FF4 TAY - Chinese Patch v1.0.2
 echo ============================================
 echo.
 
