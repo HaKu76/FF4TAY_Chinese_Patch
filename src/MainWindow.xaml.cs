@@ -13,13 +13,19 @@ public partial class MainWindow : Window
 {
     private string? GameDir;
     private string LprojDir = "";
-    private string ArialPath = "";
+    private string[] FontPaths = Array.Empty<string>();
 
     public MainWindow()
     {
         InitializeComponent();
         InitPaths();
-        Log("FF4 TAY 中文补丁 v1.0.2\n");
+        Log("FF4 TAY 中文补丁 v1.0.3\n");
+        if (!File.Exists(Path.Combine(GameDir!, "FF4A.exe")))
+        {
+            Log("未找到 FF4A.exe，请将安装器放到游戏根目录或其直属补丁文件夹内。");
+            InstallBtn.IsEnabled = false;
+            return;
+        }
         Log("点击「安装补丁」开始安装。");
         Log("如需卸载，请在 Steam 验证游戏文件完整性。");
     }
@@ -27,8 +33,14 @@ public partial class MainWindow : Window
     private void InitPaths()
     {
         GameDir = AppDomain.CurrentDomain.BaseDirectory;
+        if (!File.Exists(Path.Combine(GameDir, "FF4A.exe")))
+        {
+            var parent = Directory.GetParent(Path.TrimEndingDirectorySeparator(GameDir))?.FullName;
+            if (parent != null && File.Exists(Path.Combine(parent, "FF4A.exe"))) GameDir = parent;
+        }
         LprojDir = Path.Combine(GameDir, "Resources", "en.lproj");
-        ArialPath = Path.Combine(GameDir, "arial.ttf");
+        // Older builds load arial.ttf; Steam build 24945876 loads Arimo.ttf.
+        FontPaths = new[] { Path.Combine(GameDir, "arial.ttf"), Path.Combine(GameDir, "Arimo.ttf") };
     }
 
     private void Log(string msg)
@@ -57,28 +69,24 @@ public partial class MainWindow : Window
         {
             Log("\n========== 安装中 ==========");
 
+            var windir = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
+            var fontSource = Path.Combine(windir, "Fonts", "simhei.ttf");
+            if (!File.Exists(fontSource))
+                throw new Exception("未检测到 SimHei 黑体 (simhei.ttf)，请先安装该字体后重试。");
+
             Log("正在安装中文资源...");
             ExtractEmbeddedZip();
             Log("已安装 121 个文件");
 
             Log("正在检测系统中文字体...");
-            var windir = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
-            var fonts = new (string Name, string Path)[]
+            foreach (var fontPath in FontPaths)
             {
-                ("SimHei", System.IO.Path.Combine(windir, "Fonts", "simhei.ttf")),
-            };
-            bool found = false;
-            foreach (var (name, fp) in fonts)
-            {
-                if (File.Exists(fp))
-                {
-                    File.Copy(fp, ArialPath, true);
-                    Log($"  字体: {name}");
-                    found = true;
-                    break;
-                }
+                var backupPath = fontPath + ".chinese-patch.bak";
+                if (File.Exists(fontPath) && !File.Exists(backupPath))
+                    File.Copy(fontPath, backupPath);
+                File.Copy(fontSource, fontPath, true);
+                Log($"  SimHei → {Path.GetFileName(fontPath)}");
             }
-            if (!found) Log("  (未检测到系统中文字体)");
 
             Log("\n安装完成！启动 FF4A.exe 即可。");
             Dispatcher.Invoke(() =>

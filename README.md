@@ -11,6 +11,12 @@ Steam 版《FINAL FANTASY IV: THE AFTER YEARS》简体中文补丁，基于 Andr
 
 备用方式：运行 `Install.bat`。
 
+### v1.0.3：兼容 Steam 更新后的字体名称
+
+Steam build `24945876` 将程序读取的字体从 `arial.ttf` 改为 `Arimo.ttf`。旧补丁只替换前者，因此中文资源仍在，却无法正常显示中文；重新运行旧安装器也无法修复。
+
+v1.0.3 同时将系统 SimHei 黑体安装为 `arial.ttf` 和 `Arimo.ttf`，兼容新旧版本。覆盖前分别保存为 `*.chinese-patch.bak`，重复安装保留已有备份。字体缺失时中止并提示。安装器支持放在游戏根目录或直属补丁文件夹；批处理修复了工作目录依赖，并补上 `menu.txt` 的安装与错误检查。
+
 ## 卸载
 
 Steam 右键游戏 → 属性 → 已安装文件 → 验证游戏文件的完整性。
@@ -24,7 +30,7 @@ Steam 右键游戏 → 属性 → 已安装文件 → 验证游戏文件的完�
 | `Resources/en.lproj/menu.msd` | 菜单文本（v1.0.1 修复 3 处箭头；v1.0.2 补齐 133 条 PC 专用消息） |
 | `Resources/en.lproj/scenario.msd` | 剧情文本（v1.0.2 修复消息 450508、680362 的损坏索引） |
 | `menu.txt` | 暂停菜单中文字符串 |
-| `arial.ttf` | 自动检测并复制系统中文字体 |
+| `arial.ttf`、`Arimo.ttf` | 复制系统 SimHei 黑体，兼容新旧游戏程序 |
 
 ## 项目结构
 
@@ -51,15 +57,13 @@ FF4TAY_Chinese_Patch/
 
 1. 检测 FF4A.exe 是否运行 → 提示关闭
 
-2. 备份 Resources/en.lproj → Resources/en.lproj.backup
+2. 检查游戏目录与系统 SimHei 黑体；缺失时中止
 
 3. 从内嵌 ZIP 解压 121 个中文文件 → Resources/en.lproj/
 
 4. 写入 menu.txt 中文暂停菜单
 
-5. 检测系统字体 → 复制到 arial.ttf
-
-   优先级: SimHei → Microsoft YaHei → DengXian → SimSun
+5. 备份已有字体（`*.chinese-patch.bak`）→ 将 SimHei 复制到 `arial.ttf` 和 `Arimo.ttf`
 
 ## 字体替换
 

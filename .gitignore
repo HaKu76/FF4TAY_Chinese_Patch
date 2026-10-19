@@ -1,0 +1,18 @@
+# Original Android packages and extracted game files
+*.obb
+/tools/output/
+/tools/main_obb_extracted/
+/main_obb_extracted/
+
+# .NET build output and local IDE files
+**/bin/
+**/obj/
+**/publish/
+.vs/
+*.user
+*.suo
+
+# Python cache and local backups
+__pycache__/
+*.py[cod]
+*.bak
